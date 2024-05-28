@@ -1,4 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Forward Error Correction blog'
 theme = 'simple-style'
+
+[params]
+subtitle = 'GNU Radio project for Google Summer of Code'
