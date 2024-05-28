@@ -1,7 +1,7 @@
 +++
 title = 'Week 1: May 28-31'
 date = 2024-05-28T15:10:24-04:00
-draft = true
+draft = false
 +++
 
 This summer, I am contributing to GNU Radio through Google Summer of Code. I recently completed my Bachelor's degree in Electrical Engineering, and I'm starting a PhD program in Networks/Communications in the fall. My project involves overhauling GNU Radio's forward error correction (FEC) / error coding package (gr-fec).
