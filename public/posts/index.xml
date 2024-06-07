@@ -2,18 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Forward Error Correction blog</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>http://localhost:1313/blog/posts/</link>
     <description>Recent content in Posts on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2024 15:10:24 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Jun 2024 10:01:02 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Week1</title>
-      <link>http://localhost:1313/posts/week1/</link>
+      <title>Week2</title>
+      <link>http://localhost:1313/blog/posts/week2/</link>
+      <pubDate>Fri, 07 Jun 2024 10:01:02 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week2/</guid>
+      <description>At the end of the first two weeks, I am unfortunately behind schedule. Setting up the development environment so that I can work in-tree has required troubleshooting every step of the way. Based on my issues, I plan to update the MacOS installation guide on the wiki in the next few weeks, or at least point out some outdated instructions.&#xA;I&amp;rsquo;ve decided to start working on new blocks in an OOT module called fec_dev before moving my code over to the main tree.</description>
+    </item>
+    <item>
+      <title>Week 1: May 28-31</title>
+      <link>http://localhost:1313/blog/posts/week1/</link>
       <pubDate>Tue, 28 May 2024 15:10:24 -0400</pubDate>
-      <guid>http://localhost:1313/posts/week1/</guid>
-      <description></description>
+      <guid>http://localhost:1313/blog/posts/week1/</guid>
+      <description>This summer, I am contributing to GNU Radio through Google Summer of Code. I recently completed my Bachelor&amp;rsquo;s degree in Electrical Engineering, and I&amp;rsquo;m starting a PhD program in Networks/Communications in the fall. My project involves overhauling GNU Radio&amp;rsquo;s forward error correction (FEC) / error coding package (gr-fec).&#xA;Other open source libraries like AFF3CT (https://aff3ct.github.io/) include additional FEC implementations compared to GNU Radio. I will add FEC techniques from AFF3CT&amp;rsquo;s library into GNU Radio and develop a testbench to compare throughput and error rate for different techniques and implementations.</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week2 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week2</h1>
+    </div>
+  <div class="meta">2024-06-07 10:01</div>
+  <div class="artical-body">
+  
+    <div class="content">
+      <p>At the end of the first two weeks, I am unfortunately behind schedule. Setting up the development environment so that I can work in-tree has required troubleshooting every step of the way. Based on my issues, I plan to update the MacOS installation guide on the wiki in the next few weeks, or at least point out some outdated instructions.</p>
+<p>I&rsquo;ve decided to start working on new blocks in an OOT module called fec_dev before moving my code over to the main tree. This allows me to use gr_modtool to create new blocks but introduced some challenges with linking to the FEC source code. Generally, gr-fec implements different coding schemes by using a variable block to modify generic encoder and decoder blocks. This variable includes the main work functions.</p>
+<p>My first week goal was to create the Turbo Parallel codec blocks, and my second week goal was to code 3 more. I have created Turbo encoder and decoder blocks based on gr-fec&rsquo;s Dummy codec. It does not do any processing and directly passes the input bits to the output.</p>
+<p>My next step is to build the Turbo encoder and decoder blocks from the AFF3CT source code. I am still working on linking AFF3CT into my project and will then need to incorporate AFF3CT&rsquo;s Turbo code into the encoder and decoder blocks. Turbo Parallel also relies on a Puncturer, which I will need to add as a new block. gr-fec has a Puncture block, but I&rsquo;m not yet sure how I&rsquo;ll need to modify it for Turbo.</p>
+<p>Though I am already behind, I know that implementing the Turbo Parallel codec will be the biggest hurdle. From there, it will be easier to add in additional blocks.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>
