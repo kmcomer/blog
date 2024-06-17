@@ -6,10 +6,17 @@
     <description>Recent content on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Jun 2024 10:01:02 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 17 Jun 2024 10:13:16 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Week2</title>
+      <title>Week 3: June 10-14</title>
+      <link>http://localhost:1313/blog/posts/week3/</link>
+      <pubDate>Mon, 17 Jun 2024 10:13:16 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week3/</guid>
+      <description>Later after reading my week 2 blog post, I realized I incorrectly said that my week 2 goal was to implement the next 3 codecs. (While I was writing my proposal, I had written that as my week 2 goal in one draft.) My week 2 goal was actually to test the turbo parallel block, write QA codes, and document the new blocks. Adding, testing, and documenting the BCH, RS, and RA codecs was the Weeks 3-4 (June 10-21) goal.</description>
+    </item>
+    <item>
+      <title>Week 2: June 3-7</title>
       <link>http://localhost:1313/blog/posts/week2/</link>
       <pubDate>Fri, 07 Jun 2024 10:01:02 -0400</pubDate>
       <guid>http://localhost:1313/blog/posts/week2/</guid>

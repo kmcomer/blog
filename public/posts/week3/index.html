@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week 3: June 10-14 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week 3: June 10-14</h1>
+    </div>
+  <div class="meta">2024-06-17 10:13</div>
+  <div class="artical-body">
+  
+    <div class="content">
+      <p>Later after reading my week 2 blog post, I realized I incorrectly said that my week 2 goal was to implement the next 3 codecs. (While I was writing my proposal, I had written that as my week 2 goal in one draft.) My week 2 goal was actually to test the turbo parallel block, write QA codes, and document the new blocks. Adding, testing, and documenting the BCH, RS, and RA codecs was the Weeks 3-4 (June 10-21) goal. Nevertheless, I am still behind on both. (Thank you Marcus for your encouraging reply last week.)</p>
+<p>During week 3, I continued working on the Turbo parallel blocks. Currently, I have a working Turbo encoder using AFF3CT&rsquo;s default configuration: RSC sub-encoders and LTE standard. The LTE standard sets the Interleaver type and the polynomials that define the RSC code. I am working on expanding the encoder options to include different types of interleavers and allow more parameter customization.</p>
+<p>I have been struggling to implement the Turbo decoder block. I am working with my mentors to figure this out, and then I will add some options for customization. Additionally, for both blocks, I need to update some of the methods that the new blocks inherit from the FEC_API class.</p>
+<p>While I continue to make frustratingly slow progress, I want to thank my mentors, Andrej and Daniel, for being patient with me and providing help. By the end of this week (Week 4), I want to have a functional Turbo codec with QA codes. Week 5&rsquo;s goal is to simulate the new blocks with the BER curve generator and to fix bugs. I deliberately built next week in to catch up if I was behind. While I may not be completely caught up by the end of next week, I hope to make quicker progress once I have the first codec completed.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>
