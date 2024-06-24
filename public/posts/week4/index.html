@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week 4: June 17-21 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week 4: June 17-21</h1>
+    </div>
+  <div class="meta">2024-06-24 10:13</div>
+  <div class="artical-body">
+  
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#continued-progress-on-aff3ct-turbo-codec-implementation-in-oot-module">Continued progress on AFF3CT Turbo codec implementation in OOT module</a></li>
+  </ul>
+</nav>
+    <div class="content-with-toc">
+      <h2 id="continued-progress-on-aff3ct-turbo-codec-implementation-in-oot-module">Continued progress on AFF3CT Turbo codec implementation in OOT module</h2>
+<p>Last week, I continued to work on implementing the Turbo encoder and decoder blocks in GNU Radio. The blocks call the AFF3CT library to encode/decode the input vector, but the encoder block&rsquo;s output is not right.</p>
+<p>I started using the debugger in VS Code to step through the code. This was helpful as I was dealing with segmentation faults and needed to track down where the code was accessing invalid memory (with the help of my mentors).</p>
+<p>I am using simple flowgraphs to test. One exists in Python only, while the other is visualized in GRC. While the Python-only flowgraph prints output from the decoder, the QT GUI Time Sink block, which I only call in the GRC flowgraph, does not display decoded output. The input and output overlap exactly in the time sink.</p>
+<p>Now, I am trying to determine where the error in encoding lies. I am using Daniel&rsquo;s LTE code, which has been validated, to compare the expected encoded output with the actual output. Then, I can work on the encoder and decoder separately with known output.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>

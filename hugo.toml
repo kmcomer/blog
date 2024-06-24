@@ -5,3 +5,11 @@ theme = 'simple-style'
 
 [params]
 subtitle = 'GNU Radio project for Google Summer of Code'
+
+[[module.mounts]]
+source = 'static'
+target = 'static'
+
+[[module.mounts]]
+source = 'images'
+target = 'static/images'
