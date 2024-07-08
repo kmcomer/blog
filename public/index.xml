@@ -6,8 +6,15 @@
     <description>Recent content on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Jun 2024 10:13:12 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jul 2024 09:02:33 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 5: June 24-28</title>
+      <link>http://localhost:1313/blog/posts/week5/</link>
+      <pubDate>Mon, 08 Jul 2024 09:02:33 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week5/</guid>
+      <description>This update is for my progress two weeks ago, June 24-28. Last week, I took a vacation and did not work on the project.&#xA;Turbo codec The Turbo encoder and decoder blocks now work! In the previous code, I had a typo in the default argument for the polynomials parameter of the encoder, so the encoded and decoded implementation did not match. The quantizer for the decoder also had a misconfigured parameter.</description>
+    </item>
     <item>
       <title>Week 4: June 17-21</title>
       <link>http://localhost:1313/blog/posts/week4/</link>
