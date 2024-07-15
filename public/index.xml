@@ -6,8 +6,15 @@
     <description>Recent content on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jul 2024 09:02:33 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2024 07:09:07 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 6: July 8-12</title>
+      <link>http://localhost:1313/blog/posts/week6/</link>
+      <pubDate>Mon, 15 Jul 2024 07:09:07 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week6/</guid>
+      <description>Last week, I continued developing the Turbo codec. I added the CCSDS configuration, which runs correctly, though it still needs some work. The CCSDS implementation requires one of a few specific frame sizes (1784, 3568, 7136, or 8920 bits). Currently, my workaround pads with zeros and transmits the full corresponding codeword, which is not efficient. If CCSDS is a systematic code, I could transmit without the extra zeros and add them back before decoding.</description>
+    </item>
     <item>
       <title>Week 5: June 24-28</title>
       <link>http://localhost:1313/blog/posts/week5/</link>

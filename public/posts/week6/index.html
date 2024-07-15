@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week 6: July 8-12 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week 6: July 8-12</h1>
+    </div>
+  <div class="meta">2024-07-15 07:09</div>
+  <div class="artical-body">
+  
+    <div class="content">
+      <p>Last week, I continued developing the Turbo codec. I added the CCSDS configuration, which runs correctly, though it still needs some work. The CCSDS implementation requires one of a few specific frame sizes (1784, 3568, 7136, or 8920 bits). Currently, my workaround pads with zeros and transmits the full corresponding codeword, which is not efficient. If CCSDS is a systematic code, I could transmit without the extra zeros and add them back before decoding.</p>
+<p>I did a similar thing with the BCH codec to allow for more flexibility in choosing number of input frames. The encoder calculates the lowest allowable N (codeword size) for the user&rsquo;s number of frame bits and t (number of errors that can be corrected). It then calculates K, the number of input bits needed to produce N, and pads frame bits with (K - frame bits) zeros. Before transmitting, it deletes these extra zeros. The decoder inserts the same number of zeros to the received frame, then removes the extra zeros from the decoded output.</p>
+<p>The BCH codec works for some settings but not all. I get a segmentation fault when t is above 7 for the frame size I have been testing with. I need to try some more inputs to track down the specific error condition.</p>
+<p>My next main step is developing the testbench. Similar to AFF3CT&rsquo;s simulation tool, the testbench should generate bit error data for the user&rsquo;s configured SNR range. I will add random noise to the encoded message before passing to the decoder. Then, I&rsquo;ll plot the data to compare different configurations of the same or different decoders.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>
