@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week 7: July 15-19 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week 7: July 15-19</h1>
+    </div>
+  <div class="meta">2024-07-19 16:27</div>
+  <div class="artical-body">
+  
+    <div class="content">
+      <p>This week, I added the Repeat and Accumulate (RA) codec and worked on the Reed-Solomon (RS) codec. RA codes are fairly simple, and I did not have much trouble. However, I still need to add QA codes for them and check some additional input.</p>
+<p>RS codes are a subtype of BCH codes. I still had trouble with the BCH codes this week, and I could not get the RS codes to work at all. I am encountering a segmentation fault error, which may be due to incorrect data types and memory management. The problem is similar to what I was facing with the turbo codec a few weeks ago.</p>
+<p>I started adapting the Python flowgraph I use to test new codecs into a testbench. So far, I have added random noise to the encoded input before it is passed to the decoder. Then, I compare the output from the decoder to the original input and count the errors. This represents one simulation in the testbench, with one Eb/N0 (SNR). The next step is to cycle through different SNRs and compare. I will then make the testbench parameters configurable, so the user chooses the data size, SNR range, and minimum number of errors.</p>
+<p>I will not work on the project next week, as I had something come up. I am planning to add another week onto the end of the coding period to make up for this, so that I can get some more work on the project done.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>

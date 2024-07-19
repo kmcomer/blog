@@ -6,8 +6,15 @@
     <description>Recent content on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jul 2024 07:09:07 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jul 2024 16:27:05 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 7: July 15-19</title>
+      <link>http://localhost:1313/blog/posts/week7/</link>
+      <pubDate>Fri, 19 Jul 2024 16:27:05 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week7/</guid>
+      <description>This week, I added the Repeat and Accumulate (RA) codec and worked on the Reed-Solomon (RS) codec. RA codes are fairly simple, and I did not have much trouble. However, I still need to add QA codes for them and check some additional input.&#xA;RS codes are a subtype of BCH codes. I still had trouble with the BCH codes this week, and I could not get the RS codes to work at all.</description>
+    </item>
     <item>
       <title>Week 6: July 8-12</title>
       <link>http://localhost:1313/blog/posts/week6/</link>
