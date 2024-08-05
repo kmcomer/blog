@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jul 2024 16:27:05 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2024 12:53:50 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week8</title>
+      <link>http://localhost:1313/blog/posts/week8/</link>
+      <pubDate>Mon, 05 Aug 2024 12:53:50 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week8/</guid>
+      <description>Last week, I made progress on the testbench. I created a Python file that simulates a communication chain. The user configures the codec scheme, signal-to-noise ratio range, and message size parameters through command-line arguments. For each Eb/N0 SNR value, a loop counts the number of bit and frame errors and re-runs the flowgraph until the frame errors reaches 100 (or a different, user-specified value). Each iteration, a new random-data message is created and encoded, noisy data is added, and the data is decoded.</description>
+    </item>
     <item>
       <title>Week 7: July 15-19</title>
       <link>http://localhost:1313/blog/posts/week7/</link>
