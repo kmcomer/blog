@@ -6,8 +6,15 @@
     <description>Recent content on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Aug 2024 12:53:50 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2024 08:42:25 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 9: August 5-9</title>
+      <link>http://localhost:1313/blog/posts/week9/</link>
+      <pubDate>Mon, 12 Aug 2024 08:42:25 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week9/</guid>
+      <description>Last week, I continued developing the testbench. I restructured how I counted frame errors for clarity and fixed the calculation of sigma, the standard deviation of noise, for Es/N0 (energy per signal over noise). Now the simulation matches the AFF3CT results more closely by visual inspection. However, I still need to plot the BER and FER curves to compare my use of AFF3CT through GNU Radio blocks with the AFF3CT simulation itself.</description>
+    </item>
     <item>
       <title>Week 8: July 29 - August 2</title>
       <link>http://localhost:1313/blog/posts/week8/</link>

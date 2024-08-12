@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week 9: August 5-9 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week 9: August 5-9</h1>
+    </div>
+  <div class="meta">2024-08-12 08:42</div>
+  <div class="artical-body">
+  
+    <div class="content">
+      <p>Last week, I continued developing the testbench. I restructured how I counted frame errors for clarity and fixed the calculation of sigma, the standard deviation of noise, for Es/N0 (energy per signal over noise). Now the simulation matches the AFF3CT results more closely by visual inspection. However, I still need to plot the BER and FER curves to compare my use of AFF3CT through GNU Radio blocks with the AFF3CT simulation itself. Since the simulations take a long time to run, I need to run the program over night to generate data I can plot.</p>
+<p>I started adding other codecs from AFF3CT into GNU Radio. I added AFF3CT&rsquo;s Repetition codec, which is simple. I added &ldquo;skeleton&rdquo; blocks for LDPC, Polar, TPC, and RSC codes. The code compiles and builds, but the blocks do not do anything.</p>
+<p>This week, I will continue working on the testbench, compare the testbench to AFF3CT using plots, and continue adding the new codec blocks.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>
