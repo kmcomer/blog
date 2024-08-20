@@ -6,8 +6,15 @@
     <description>Recent content on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Aug 2024 08:42:25 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2024 08:45:36 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 10: August 12-16</title>
+      <link>http://localhost:1313/blog/posts/week10/</link>
+      <pubDate>Tue, 20 Aug 2024 08:45:36 -0400</pubDate>
+      <guid>http://localhost:1313/blog/posts/week10/</guid>
+      <description>Last week, I worked on comparing the testbench results to AFF3CT&amp;rsquo;s simulation and adding new codecs into the OOT module.&#xA;I implemented the polar codec with hard-coded values to get it up and running. Now, I need to go back and adjust the code so a user can configure the simulation to their preferences. I also started adding the turbo product code (TPC) codec but encountered errors along the way and have more work to do with it.</description>
+    </item>
     <item>
       <title>Week 9: August 5-9</title>
       <link>http://localhost:1313/blog/posts/week9/</link>

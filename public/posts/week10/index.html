@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://localhost:1313/blog/">
+  <title>Week 10: August 12-16 - Forward Error Correction blog</title>
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/main.css">
+</head>
+<body>
+  <header>
+<div>
+    <h1><a href="http://localhost:1313/blog/">Forward Error Correction blog</a></h1><h2><a href="http://localhost:1313/blog/">GNU Radio project for Google Summer of Code</a></h2>
+  </div>
+  <nav>
+  </nav>
+</header>
+<main>
+    <article>
+  <div class="title">
+    <h1>Week 10: August 12-16</h1>
+    </div>
+  <div class="meta">2024-08-20 08:45</div>
+  <div class="artical-body">
+  
+    <div class="content">
+      <p>Last week, I worked on comparing the testbench results to AFF3CT&rsquo;s simulation and adding new codecs into the OOT module.</p>
+<p>I implemented the polar codec with hard-coded values to get it up and running. Now, I need to go back and adjust the code so a user can configure the simulation to their preferences. I also started adding the turbo product code (TPC) codec but encountered errors along the way and have more work to do with it.</p>
+<p>I created a plot_testbench tool to plot the data recorded by the testbench. Currently, it only plots the testbench&rsquo;s data and not AFF3CT&rsquo;s simulation data. I plan to restructure the testbench&rsquo;s created data file to match AFF3CT&rsquo;s format. That way, users can upload their data to AFF3CT&rsquo;s BER/FER comparator tool on its website and use its PyBER Python GUI tool. Users can use my plotting tool for convenience and AFF3CT&rsquo;s plotting tools if they want to view the data in more detail.</p>
+<p>I revisited the BCH code implementation, which had been unexpectedly and inconsistently returning segmentation faults. I made some progress on the codec, but ultimately, I am still experiencing issues with the codec.</p>
+<p>This week, my main focuses are to generate plots from the codecs I have working, and update incomplete but functional implementations to allow more user configurations.</p>
+</div>
+  
+  </div>
+</article>
+
+  </main><footer>
+  <p>&copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a></p></footer>
+
+  
+
+
+</body>
+</html>
