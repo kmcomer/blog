@@ -90,12 +90,12 @@ The testbench is a Python script that runs flowgraph simulations to generate BER
 | M | Maximum Eb/N0                                                    |
 | S | Eb/N0 step between each simulation iteration                     |
 
-![Screenshot of AFF3CT simulation](/blog//posts/aff3ct_sim.png)
-<img src = "/blog//posts/images/aff3ct_sim.png">
+![Screenshot of AFF3CT simulation](/blog/posts/aff3ct_sim.png)
+
 AFF3CT command-line simulation
 
-![Screenshot of gr-fec_dev simulation](/blog//posts/gr_testbench.png)
-<img src = "/blog//posts/images/gr_testbench.png">
+![Screenshot of gr-fec_dev simulation](/blog/posts/gr_testbench.png)
+
 gr-fec_dev testbench simulation
 
 The script first creates a log file with the simulation information. For each Eb/N0, the script generates a random message of length F and creates a communication chain flowgraph: Source -> Throttle -> Unpack -> Encoder -> BPSK -> Noise -> Decoder. After the flowgraph executes, the script counts the number of bit and frame errors. If the number of frame errors is at least E, the script saves the data to the file and moves on to the next Eb/N0 value. Otherwise, it reruns the flowgraph. After each iteration of the flowgraph, the script updates the values to the command window.
@@ -138,34 +138,34 @@ The public header files list the default quantization parameters for each block,
 ### Turbo
 I spent the most time working on the Turbo, and it is the most complete. Users can configure LTE, CCSDS, or CUSTOM turbo codes. The following graphs from PyBER show there is about 0.1 dB offset between the gr-fec_dev Turbo simulation (red) and the AFF3CT simulation (yellow).
 
-![PyBER Turbo FER](/blog//posts/turbo_fer.png)
-<img src = "/blog//posts/images/turbo_fer.png">
+![PyBER Turbo FER](/blog/posts/turbo_fer.png)
+
 PyBER graph of Turbo FER from GR testbench and AFF3CT simulations
 
-![PyBER Turbo BER](/blog//posts/turbo_ber.png)
-<img src = "/blog//posts/images/turbo_ber.png">
+![PyBER Turbo BER](/blog/posts/turbo_ber.png)
+
 PyBER graph of Turbo BER from GR testbench and AFF3CT simulations
 
 ### BCH
 The BCH implementation in GNU Radio pads the input with zeros as needed due to constrained N and K values, and it casts 8-bit values to 32-bit values due to another constraint in the AFF3CT BCH polynomial calculation. I encountered a lot of errors along the way with the BCH codec. Unfortunately, the testbench results were not great for the GR/AFF3CT comparison. I chose K and T, the correction power, for the simulation so there was no zero padding (for an even comparison with the AFF3CT simulation), but the large offset in error rate indicates there might still be an error in the blocks.
 
-![PyBER BCH FER](/blog//posts/bch_fer.png)
-<img src = "/blog//posts/images/bch_fer.png">
+![PyBER BCH FER](/blog/posts/bch_fer.png)
+
 PyBER graph of BCH FER from GR testbench and AFF3CT simulations
 
-![PyBER BCH BER](/blog//posts/bch_ber.png)
-<img src = "/blog//posts/images/bch_ber.png">
+![PyBER BCH BER](/blog/posts/bch_ber.png)
+
 PyBER graph of BCH BER from GR testbench and AFF3CT simulations
 
 ### RA
 The RA codec is functional, but it seems to have bugs. In the BER and FER graphs, the RA codes performed much worse and generally poorly compared to the AFF3CT simulation. I generated the data for the yellow, 'aff3ct sim' line by running an AFF3CT simulation from the command line. The red, 'aff3ct lib ref' line is from the 'ref' folder within the AFF3CT library. I am not sure why there is a difference between this data and the simulation data, but the parameters in that simulation may have been tweaked for best performance.
 
-![PyBER RA FER](/blog//posts/ra_fer.png)
-<img src = "/blog//posts/images/ra_fer.png">
+![PyBER RA FER](/blog/posts/ra_fer.png)
+
 PyBER graph of RA FER from GR testbench and AFF3CT simulations
 
-![PyBER BCH BER](/blog//posts/ra_ber.png)
-<img src = "/blog//posts/images/ra_ber.png">
+![PyBER BCH BER](/blog/posts/ra_ber.png)
+
 PyBER graph of RA BER from GR testbench and AFF3CT simulations
 
 ### Polar
@@ -175,12 +175,12 @@ With the NAIVE decoder implementation, N must be a power of 2, but this is not a
 
 The current combination of Polar parameters that works is GA_ARIKAN frozen bit generation, Sigma noise, SC decoder, and NAIVE implementation. Running with these parameters, the AFF3CT-based GNU Radio blocks ('gr-fec_dev' curve) performed about 0.1 dB worse than the AFF3CT simulation. I attempted to incorporate the existing Polar blocks ('gr-fec' curve) to compare with the AFF3CT-based blocks. These results were quite poor, but I may have coded these incorrectly within the testbench.
 
-![PyBER Polar FER](/blog//posts/polar_fer.png)
-<img src = "/blog//posts/images/polar_fer.png">
+![PyBER Polar FER](/blog/posts/polar_fer.png)
+
 PyBER graph of Polar FER from GR testbench and AFF3CT simulations
 
-![PyBER Polar BER](/blog//posts/polar_ber.png)
-<img src = "/blog//posts/images/polar_ber.png">
+![PyBER Polar BER](/blog/posts/polar_ber.png)
+
 PyBER graph of Polar BER from GR testbench and AFF3CT simulations
 
 ### RS

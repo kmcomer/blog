@@ -143,12 +143,10 @@ make install
 </tr>
 </tbody>
 </table>
-<p><img src="/blog//posts/aff3ct_sim.png" alt="Screenshot of AFF3CT simulation">
-<!-- raw HTML omitted -->
-AFF3CT command-line simulation</p>
-<p><img src="/blog//posts/gr_testbench.png" alt="Screenshot of gr-fec_dev simulation">
-<!-- raw HTML omitted -->
-gr-fec_dev testbench simulation</p>
+<p><img src="/blog/posts/aff3ct_sim.png" alt="Screenshot of AFF3CT simulation"></p>
+<p>AFF3CT command-line simulation</p>
+<p><img src="/blog/posts/gr_testbench.png" alt="Screenshot of gr-fec_dev simulation"></p>
+<p>gr-fec_dev testbench simulation</p>
 <p>The script first creates a log file with the simulation information. For each Eb/N0, the script generates a random message of length F and creates a communication chain flowgraph: Source -&gt; Throttle -&gt; Unpack -&gt; Encoder -&gt; BPSK -&gt; Noise -&gt; Decoder. After the flowgraph executes, the script counts the number of bit and frame errors. If the number of frame errors is at least E, the script saves the data to the file and moves on to the next Eb/N0 value. Otherwise, it reruns the flowgraph. After each iteration of the flowgraph, the script updates the values to the command window.</p>
 <p>One area for improvement within the testbench is allowing more user options that may be available through the AFF3CT simulation and/or in the encoder/decoder implementations. For example, while a user could run a custom Turbo code with row-column interleaving using the GNU Radio blocks, the testbench is not equipped to handle all the necessary configuration options. Right now, it might be easier to hardcode specific options than to try to use the command-line interface.</p>
 <p>The testbench is not currently configured to run with existing gr-fec blocks. This is important, and theoretically not difficult, but I ran out of time to do it. This would pave the way for completing deliverable 4, comparing existing gr-fec blocks to new, AFF3CT-based gr-fec_dev blocks.</p>
@@ -171,38 +169,30 @@ gr-fec_dev testbench simulation</p>
 <p>The public header files list the default quantization parameters for each block, which should match the <a href="https://aff3ct.readthedocs.io/en/latest/user/simulation/parameters/quantizer/quantizer.html">AFF3CT documentation table</a>.</p>
 <h3 id="turbo">Turbo</h3>
 <p>I spent the most time working on the Turbo, and it is the most complete. Users can configure LTE, CCSDS, or CUSTOM turbo codes. The following graphs from PyBER show there is about 0.1 dB offset between the gr-fec_dev Turbo simulation (red) and the AFF3CT simulation (yellow).</p>
-<p><img src="/blog//posts/turbo_fer.png" alt="PyBER Turbo FER">
-<!-- raw HTML omitted -->
-PyBER graph of Turbo FER from GR testbench and AFF3CT simulations</p>
-<p><img src="/blog//posts/turbo_ber.png" alt="PyBER Turbo BER">
-<!-- raw HTML omitted -->
-PyBER graph of Turbo BER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/turbo_fer.png" alt="PyBER Turbo FER"></p>
+<p>PyBER graph of Turbo FER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/turbo_ber.png" alt="PyBER Turbo BER"></p>
+<p>PyBER graph of Turbo BER from GR testbench and AFF3CT simulations</p>
 <h3 id="bch">BCH</h3>
 <p>The BCH implementation in GNU Radio pads the input with zeros as needed due to constrained N and K values, and it casts 8-bit values to 32-bit values due to another constraint in the AFF3CT BCH polynomial calculation. I encountered a lot of errors along the way with the BCH codec. Unfortunately, the testbench results were not great for the GR/AFF3CT comparison. I chose K and T, the correction power, for the simulation so there was no zero padding (for an even comparison with the AFF3CT simulation), but the large offset in error rate indicates there might still be an error in the blocks.</p>
-<p><img src="/blog//posts/bch_fer.png" alt="PyBER BCH FER">
-<!-- raw HTML omitted -->
-PyBER graph of BCH FER from GR testbench and AFF3CT simulations</p>
-<p><img src="/blog//posts/bch_ber.png" alt="PyBER BCH BER">
-<!-- raw HTML omitted -->
-PyBER graph of BCH BER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/bch_fer.png" alt="PyBER BCH FER"></p>
+<p>PyBER graph of BCH FER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/bch_ber.png" alt="PyBER BCH BER"></p>
+<p>PyBER graph of BCH BER from GR testbench and AFF3CT simulations</p>
 <h3 id="ra">RA</h3>
 <p>The RA codec is functional, but it seems to have bugs. In the BER and FER graphs, the RA codes performed much worse and generally poorly compared to the AFF3CT simulation. I generated the data for the yellow, &lsquo;aff3ct sim&rsquo; line by running an AFF3CT simulation from the command line. The red, &lsquo;aff3ct lib ref&rsquo; line is from the &lsquo;ref&rsquo; folder within the AFF3CT library. I am not sure why there is a difference between this data and the simulation data, but the parameters in that simulation may have been tweaked for best performance.</p>
-<p><img src="/blog//posts/ra_fer.png" alt="PyBER RA FER">
-<!-- raw HTML omitted -->
-PyBER graph of RA FER from GR testbench and AFF3CT simulations</p>
-<p><img src="/blog//posts/ra_ber.png" alt="PyBER BCH BER">
-<!-- raw HTML omitted -->
-PyBER graph of RA BER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/ra_fer.png" alt="PyBER RA FER"></p>
+<p>PyBER graph of RA FER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/ra_ber.png" alt="PyBER BCH BER"></p>
+<p>PyBER graph of RA BER from GR testbench and AFF3CT simulations</p>
 <h3 id="polar">Polar</h3>
 <p>The Polar codec is functional but does not allow much user configuration compared to what is possible with AFF3CT. The polar blocks require K, N, and sigma inputs. Ideally, users would be allow to configure frozen bit generation method (GA_ARIKAN, FIVE_G, BEC, GA, TV), noise type (Sigma, Received_optical_power, Event_probability), decoder type (SC, ASCL, SCAN, SCF, SCL), and decoder implementation (NAIVE, FAST).</p>
 <p>With the NAIVE decoder implementation, N must be a power of 2, but this is not a requirement when using the AFF3CT command-line simulation, for NAIVE or FAST decoder implementation. It seems that AFF3CT rounds the codeword size to the next highest power of 2.</p>
 <p>The current combination of Polar parameters that works is GA_ARIKAN frozen bit generation, Sigma noise, SC decoder, and NAIVE implementation. Running with these parameters, the AFF3CT-based GNU Radio blocks (&lsquo;gr-fec_dev&rsquo; curve) performed about 0.1 dB worse than the AFF3CT simulation. I attempted to incorporate the existing Polar blocks (&lsquo;gr-fec&rsquo; curve) to compare with the AFF3CT-based blocks. These results were quite poor, but I may have coded these incorrectly within the testbench.</p>
-<p><img src="/blog//posts/polar_fer.png" alt="PyBER Polar FER">
-<!-- raw HTML omitted -->
-PyBER graph of Polar FER from GR testbench and AFF3CT simulations</p>
-<p><img src="/blog//posts/polar_ber.png" alt="PyBER Polar BER">
-<!-- raw HTML omitted -->
-PyBER graph of Polar BER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/polar_fer.png" alt="PyBER Polar FER"></p>
+<p>PyBER graph of Polar FER from GR testbench and AFF3CT simulations</p>
+<p><img src="/blog/posts/polar_ber.png" alt="PyBER Polar BER"></p>
+<p>PyBER graph of Polar BER from GR testbench and AFF3CT simulations</p>
 <h3 id="rs">RS</h3>
 <p>Currently, running the RS codec results in segmentation faults. RS in AFF3CT is similar to BCH. I have made many bug fixes to BCH and have not looked through the RS code carefully to make sure it does not make the same mistakes. It is possible that the RS codec is very close to working, although there could be additional bugs in the BCH codec too.</p>
 <h3 id="repetition">Repetition</h3>
