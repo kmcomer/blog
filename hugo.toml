@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = 'Forward Error Correction blog'
 theme = 'simple-style'
 
+copyright = 'Copyright 2024 Kayla Comer'
+
 [params]
 subtitle = 'GNU Radio project for Google Summer of Code'
 

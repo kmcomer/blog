@@ -1,13 +1,13 @@
 +++
-title = 'Final /blog post: project overview and conclusions'
+title = 'Final blog post: project overview and conclusions'
 date = 2024-08-29T06:40:42-04:00
 +++
 
-I worked on a Forward Error Correction (FEC) project in GNU Radio for Google Summer of Code 2024. I started the project at the end of May, and I'm wrapping up now, at the beginning of September. Throughout the project, I've made /blog posts describing my progress (see the homepage of this website), though I did not post updates for the last couple of weeks, August 19-30 -- apologies.
+I worked on a Forward Error Correction (FEC) project in GNU Radio for Google Summer of Code 2024. I started the project at the end of May, and I'm wrapping up now, at the beginning of September. Throughout the project, I've made blog posts describing my progress (see the homepage of this website), though I did not post updates for the last couple of weeks, August 19-30 -- apologies.
 
 I would like to thank my mentors, noc0lour and Daniel Estévez, for their help on the project this summer. They were patient with me from the start, as I struggled to set up the environment and link AFF3CT, and they let me extend the deadline by a couple of weeks so I could get more done on the project.
 
-This project has been a great introduction to open-source coding. There are many unfinished parts, but there are complete sections and working, hopefully useful, code, and I intend to keep working on it as I find the time.
+This project has been a great introduction to open-source coding. There are many unfinished parts, but there are complete sections and working, hopefully useful, code. I succeeded in linking the AFF3CT library into GNU Radio, adding new codec blocks, implementing the turbo and polar blocks, and creating a testbench. I intend to keep working on it as I find the time.
 
 ## Background
 FEC limits communication-chain data errors by detecting and correcting bit errors. In GNU Radio, the gr-fec in-tree module contains pairs of encoder/decoders (codecs) that implement different FEC schemes. 
@@ -65,16 +65,20 @@ make
 make install
 ```
 
-## gr-fec_dev
-Initially, I aimed to develop new blocks in-tree, but I had issues using gr_modtool and decided to create an out-of-tree (OOT) module called gr-fec_dev. One remaining task is to port the functional blocks in-tree.
+I am planning to submit a pull request to AFF3CT regarding these bugs, with Daniel's help.
 
-Learning how the AFF3CT library and GNU Radio's FEC API are structured was a major challenge at the beginning of the project. The AFF3CT library is optimized for simulations, and [its library examples](https://aff3ct.readthedocs.io/en/latest/user/library/examples.html) use the full communication chain, rather than just the encoder or decoder. Recognizing the files pattern and finding the right constructor for each FEC_API object was an important step.
+After resolving these errors, I had successfully linked the AFF3CT library into GNU Radio.
+
+## gr-fec_dev
+Initially, I aimed to develop new blocks in-tree, but I had issues using gr_modtool and decided to create an out-of-tree (OOT) module called gr-fec_dev. One remaining task is to port the functional blocks in-tree. The [repository and code I worked on is hosted here](https://github.com/kaylacomer/gr-fec_dev).
+
+Learning how the AFF3CT library and GNU Radio's FEC API are structured was a major challenge at the beginning of the project. The AFF3CT library is optimized for simulations, and [its library examples](https://aff3ct.readthedocs.io/en/latest/user/library/examples.html) use the full communication chain, rather than just the encoder or decoder. Recognizing the files pattern and finding the right constructor for each FEC_API object was an important step. Now, I am much more comfortable with the AFF3CT codebase and can quickly find the files I need.
 
 I started by creating blocks modeled on the Dummy codec in gr-fec, which copies the input to the output without any processing. Each encoder/decoder is a FEC_API object that inherits from the generic encoder or decoder and overrides mandatory functions including `get_output_size()`, `get_input_size()`, `rate()`, and `generic_work()`. The FEC_API object has private members for the AFF3CT encoder/decoder and any other AFF3CT tools needed in the constructor (ex. interleaver) to build the encoder/decoder or needed in `generic_work()` (ex. quantizer). In the encoder, `generic_work()` simply calls `encode` on the input and output buffers. In the decoder, `volk` multiplies the input log-likelihood ratios (LLRs) by -1. Then the data is quantized by the AFF3CT quantizer and finally decoded by the AFF3CT decoder.
 
 I have documented all the parameters in the public header files. I included many parameters that are not implemented but are AFF3CT library options, in case someone wants to add these options in the future. If a user tries to choose an option that is not relevant / has not been coded, they will get a runtime error.
 
-One issue I faced during the project was prioritizing my time. The AFF3CT library is capable of an overwhelming number of configurations, and I probably spent more time adding uncommon user choices than I should have.
+One issue I faced during the project was prioritizing my time. The AFF3CT library is capable of an overwhelming number of configurations, and I probably spent more time adding uncommon user choices than I should have. However, including these options allows users to understand and control some of the assumptions, optimizations, and methods of the codec.
 
 ## Testbench
 The testbench is a Python script that runs flowgraph simulations to generate BER and FER data. The parameters and output mimic the AFF3CT simulation. Some of the parameters in the testbench are listed below, followed by output from an AFF3CT simulation and a testbench simulation.
@@ -100,18 +104,16 @@ gr-fec_dev testbench simulation
 
 The script first creates a log file with the simulation information. For each Eb/N0, the script generates a random message of length F and creates a communication chain flowgraph: Source -> Throttle -> Unpack -> Encoder -> BPSK -> Noise -> Decoder. After the flowgraph executes, the script counts the number of bit and frame errors. If the number of frame errors is at least E, the script saves the data to the file and moves on to the next Eb/N0 value. Otherwise, it reruns the flowgraph. After each iteration of the flowgraph, the script updates the values to the command window.
 
-One area for improvement within the testbench is allowing more user options that may be available through the AFF3CT simulation and/or in the encoder/decoder implementations. For example, while a user could run a custom Turbo code with row-column interleaving using the GNU Radio blocks, the testbench is not equipped to handle all the necessary configuration options. Right now, it might be easier to hardcode specific options than to try to use the command-line interface.
+One area for improvement within the testbench is allowing more user options that may be available through the AFF3CT simulation and/or in the encoder/decoder implementations. For example, while a user could run a custom Turbo code with row-column interleaving using the GNU Radio blocks, the testbench is not equipped to handle all the necessary configuration options. Right now, it might be easier to hardcode specific options than to try to use the command-line interface. However, the testbench can run with any of the gr-fec_dev codecs (that are functional) using default parameters, which makes it easy to get started.
 
-The testbench is not currently configured to run with existing gr-fec blocks. This is important, and theoretically not difficult, but I ran out of time to do it. This would pave the way for completing deliverable 4, comparing existing gr-fec blocks to new, AFF3CT-based gr-fec_dev blocks.
+The testbench is not currently configured to run with existing gr-fec blocks. This is important, and theoretically not difficult, but I ran out of time to do it. This would pave the way for completing deliverable 4, comparing existing gr-fec blocks to new, AFF3CT-based gr-fec_dev blocks. One obstacle is that many of the existing blocks require more parameters or helper blocks, which makes it harder to get these blocks running without reading the documentation in detail.
 
-The trace data for the gr-fec_dev testbench is also lacking compared to the AFF3CT simulation. It would not be difficult to add more information to the header using the user configuration and default values. When running the testbench for BCH codes, the header info does not list T, the correction power. This is an important parameter and just an example, as other information is not saved that should be. This will require some additional conditional statements to determine exactly what should be printed and saved for specific parameter choices.
+The trace data for the gr-fec_dev testbench is also lacking compared to the AFF3CT simulation. It would not be difficult to add more information to the header using the user configuration and default values. When running the testbench for BCH codes, the header info does not list T, the correction power. This is an important parameter and just an example, as other information is not saved that should be. This will require some additional conditional statements to determine exactly what should be printed and saved for specific parameter choices. Right now, the trace data lists the frame size, codeword size, codec type, and other info about the test.
 
 A current problem with the testbench is that the number of frames per message, F, must be a power of 2. If it is not, the testbench stops with an error like 
 `ValueError: operands could not be broadcast together with shapes (2176,) (2112,)`
 
 From looking at [the code for the base class encoder](https://github.com/gnuradio/gnuradio/blob/main/gr-fec/lib/encoder_impl.cc), Daniel thinks the issue may be that `ninput_items[0] < fixed_rate_noutput_to_ninput(noutput_items)` in some calls, making the last bits in the encoder input garbage. Actually, this is likely a problem within gr-fec and not the testbench itself.
-
-<!-- Does anyone want to build a custom Turbo code with bottom-left column-row interleaving, inter-intra SIMD BCJR X2_AVX decoding? I'm not sure. Is it configurable? Still no, actually, that's a work in progress. Will it work in GNU Radio once its configured correctly? Maybe. Underlying all those questions, is it worth the time? -->
 
 
 ## Block parameters, status, and results
@@ -201,6 +203,13 @@ I tried to test the TPC blocks using QA codes (`qa_tpc_aff3ct.py`) but encounter
 
 ### LDPC
 I made the least progress on LDPC codes. I added parameters based on [the AFF3CT documentation](https://aff3ct.readthedocs.io/en/latest/user/simulation/parameters/codec/ldpc/codec.html), but the blocks are non-functional.
+
+## Successes
+- AFF3CT library linked with GNU Radio
+- At minimum, skeleton blocks for all AFF3CT codecs
+- Testbench to simulate and measure codec performance
+- Data compatible with PyBER plotting tool
+- Well-performing AFF3CT-based turbo and polar codecs
 
 ## Ongoing issues / code that needs work
 - Porting functional blocks to main tree

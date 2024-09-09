@@ -6,14 +6,15 @@
     <description>Recent content in Posts on Forward Error Correction blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <copyright>Copyright 2024 Kayla Comer</copyright>
     <lastBuildDate>Thu, 29 Aug 2024 06:40:42 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Final /blog post: project overview and conclusions</title>
+      <title>Final blog post: project overview and conclusions</title>
       <link>http://localhost:1313/blog/posts/final/</link>
       <pubDate>Thu, 29 Aug 2024 06:40:42 -0400</pubDate>
       <guid>http://localhost:1313/blog/posts/final/</guid>
-      <description>I worked on a Forward Error Correction (FEC) project in GNU Radio for Google Summer of Code 2024. I started the project at the end of May, and I&amp;rsquo;m wrapping up now, at the beginning of September. Throughout the project, I&amp;rsquo;ve made /blog posts describing my progress (see the homepage of this website), though I did not post updates for the last couple of weeks, August 19-30 &amp;ndash; apologies.&#xA;I would like to thank my mentors, noc0lour and Daniel Estévez, for their help on the project this summer.</description>
+      <description>I worked on a Forward Error Correction (FEC) project in GNU Radio for Google Summer of Code 2024. I started the project at the end of May, and I&amp;rsquo;m wrapping up now, at the beginning of September. Throughout the project, I&amp;rsquo;ve made blog posts describing my progress (see the homepage of this website), though I did not post updates for the last couple of weeks, August 19-30 &amp;ndash; apologies.&#xA;I would like to thank my mentors, noc0lour and Daniel Estévez, for their help on the project this summer.</description>
     </item>
     <item>
       <title>Week 10: August 12-16</title>
